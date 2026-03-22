@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌼</title>
+
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background: linear-gradient(#fff7cc, #ffe066);
+        font-family: Arial, sans-serif;
+        overflow:hidden;
+        text-align:center;
+    }
+
+    #inicio{
+        z-index:10;
+    }
+
+    button{
+        padding:15px 25px;
+        font-size:18px;
+        border:none;
+        border-radius:20px;
+        background:#ffcc00;
+        color:#333;
+        cursor:pointer;
+        box-shadow:0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    #mensaje{
+        display:none;
+        font-size:22px;
+        color:#444;
+        padding:20px;
+    }
+
+    .flor{
+        position:absolute;
+        font-size:24px;
+        animation:flotar linear infinite;
+    }
+
+    @keyframes flotar{
+        0%{
+            transform:translateY(100vh) rotate(0deg);
+            opacity:0;
+        }
+        20%{opacity:1;}
+        100%{
+            transform:translateY(-10vh) rotate(360deg);
+            opacity:0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="inicio">
+    <button onclick="iniciar()">Toca aquí 🌼</button>
+</div>
+
+<div id="mensaje">
+    <p>No es nada especial…</p>
+    <p>pero vi esto y pensé en ti 🌼</p>
+</div>
+
+<script>
+function iniciar(){
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("mensaje").style.display="block";
+
+    // Crear flores
+    for(let i=0;i<25;i++){
+        crearFlor();
+    }
+}
+
+function crearFlor(){
+    const flor = document.createElement("div");
+    flor.classList.add("flor");
+    flor.innerHTML = "🌼";
+
+    flor.style.left = Math.random() * 100 + "vw";
+    flor.style.animationDuration = (3 + Math.random()*5) + "s";
+
+    document.body.appendChild(flor);
+
+    setTimeout(()=>{
+        flor.remove();
+        crearFlor();
+    },8000);
+}
+</script>
+
+</body>
+</html>
